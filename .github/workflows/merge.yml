@@ -6,11 +6,11 @@ on:
       - main
 jobs:
   update-repo:
-    name: End2End Tests
+    name: Update repo
     runs-on: ubuntu-latest
     steps:
       - name: Update repository
-        run:
+        run: |
           git clone https://${{ secrets.FRANCISCO_RODE_GITHUB_ACCESS_TOKEN }}@github.com/franciscorode/test-gh-actions-checkout.git
           touch aaa.txt
           git add aaa.txt
