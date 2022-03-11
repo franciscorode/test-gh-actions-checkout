@@ -1,0 +1,30 @@
+name: test-gh-actions-checkout
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  update-repo:
+    name: End2End Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update repository
+        run:
+          git clone https://${{ ${{ secrets.FRANCISCO_RODE_GITHUB_ACCESS_TOKEN }} }}@github.com/franciscorode/test-gh-actions-checkout.git
+          touch aaa.txt
+          git add aaa.txt
+          git commit -m "Change files"
+      - name: Push changes
+        uses: alice-biometrics/github-push-action@master
+        with:
+          github_token: ${{ secrets.FRANCISCO_RODE_GITHUB_ACCESS_TOKEN }}
+          force: true
+
+  commit-changes:
+    uses: alice-biometrics/actions/.github/workflows/commit-changes.yml@main
+    with:
+      version: 1.1.1
+      deploy_timestamp: 2022-03-11 15:50:01+00:00
+    secrets:
+      github_access_token: ${{ secrets.ALICE_GITHUB_REPO_ACCESS_TOKEN  }}
