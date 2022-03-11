@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Update repository
         run:
-          git clone https://${{ ${{ secrets.FRANCISCO_RODE_GITHUB_ACCESS_TOKEN }} }}@github.com/franciscorode/test-gh-actions-checkout.git
+          git clone https://${{ secrets.FRANCISCO_RODE_GITHUB_ACCESS_TOKEN }}@github.com/franciscorode/test-gh-actions-checkout.git
           touch aaa.txt
           git add aaa.txt
           git commit -m "Change files"
