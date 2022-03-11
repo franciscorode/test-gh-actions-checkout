@@ -9,6 +9,7 @@ jobs:
     name: Update repo
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Update repository
         run: |
           git clone https://${{ secrets.FRANCISCO_RODE_GITHUB_ACCESS_TOKEN }}@github.com/franciscorode/test-gh-actions-checkout.git
@@ -18,6 +19,7 @@ jobs:
           git config --global user.email "fran_rode@hotmail.com"
           git config --global user.name "franciscorode"
           git commit -m "Change files"
+          git push
       - name: Push changes
         uses: alice-biometrics/github-push-action@master
         with:
@@ -25,6 +27,7 @@ jobs:
           force: true
 
   checkout:
+    needs:  [update-repo]
     name: Checkout repo
     runs-on: ubuntu-latest
     steps:
