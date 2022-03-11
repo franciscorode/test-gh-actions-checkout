@@ -19,7 +19,6 @@ jobs:
           git config --global user.email "fran_rode@hotmail.com"
           git config --global user.name "franciscorode"
           git commit -m "Change files"
-          git push
       - name: Push changes
         uses: alice-biometrics/github-push-action@master
         with:
