@@ -3,8 +3,10 @@ name: test-gh-actions-release
 on:
   release:
     types: [published]
+    paths:
+      - 'v**'
     tags-ignore:
-      - v1.*
+      - '**'
 jobs:
   test-release:
     name: Test
