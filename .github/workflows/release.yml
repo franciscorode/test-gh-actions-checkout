@@ -1,8 +1,7 @@
 name: test-gh-actions-release
 
 on:
-  release:
-    types: [published]
+  create:
     tags:
       - "v[0-9]+.[0-9]+"
 jobs:
