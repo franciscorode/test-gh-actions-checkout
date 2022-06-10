@@ -10,4 +10,8 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo ${{ github.event.ref }}
+          echo "ref_name: ${{ github.ref_name }}"
+          echo "ref: ${{ github.ref }}"
+          echo "action_ref: ${{ github.action_ref }}"
+          echo "release: ${{ github.event.release }}"
+          echo "github.release: ${{ github.release }}"
