@@ -3,8 +3,6 @@ name: test-gh-actions-release
 on:
   release:
     types: [ published ]
-    releases:
-      - v*
 jobs:
   test-release:
     name: Test
@@ -12,4 +10,4 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo "release"
+          echo ${{ github.event }}
