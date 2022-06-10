@@ -3,7 +3,7 @@ name: test-gh-actions-release
 on:
   release:
     types: [published]
-    paths:
+    tags:
       - 'v**'
     tags-ignore:
       - '**'
