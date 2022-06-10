@@ -1,0 +1,15 @@
+name: test-gh-actions-checkout
+
+on:
+  release:
+    types: [published]
+    tags-ignore:
+      - '*rc*'
+jobs:
+  update-repo:
+    name: Update repo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          echo "release"
