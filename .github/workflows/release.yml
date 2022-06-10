@@ -2,8 +2,8 @@ name: test-gh-actions-release
 
 on:
   push:
-    tags-ignore:
-      - '**rc**'
+    tags:
+      - v*
 jobs:
   test-release:
     name: Test
