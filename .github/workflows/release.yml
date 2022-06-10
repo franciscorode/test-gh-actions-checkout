@@ -1,13 +1,13 @@
-name: test-gh-actions-checkout
+name: test-gh-actions-release
 
 on:
   release:
     types: [published]
     tags-ignore:
-      - '*rc*'
+      - '**rc**'
 jobs:
-  update-repo:
-    name: Update repo
+  test-release:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Test
