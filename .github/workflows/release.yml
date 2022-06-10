@@ -4,7 +4,7 @@ on:
   release:
     types: [published]
     tags-ignore:
-      - '**rc**'
+      - v1.*
 jobs:
   test-release:
     name: Test
