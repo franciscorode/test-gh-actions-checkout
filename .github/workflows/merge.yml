@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Set Environment
         run: |
-          echo "TEST_VARIABLE=${{ secrets.TEST_JSON_MULTILINE_VARIABLE }}" >> $GITHUB_ENV
+          echo "TEST_VARIABLE={ ${{ secrets.TEST_JSON_MULTILINE_VARIABLE }} }" >> $GITHUB_ENV
       - name: Test
         run: |
-          echo "ref_name: ${{ env.TEST_VARIABLE }}"
+          echo "variable: ${{ env.TEST_VARIABLE }}"
       - uses: actions/checkout@v2
       - name: Update repository
         run: |
