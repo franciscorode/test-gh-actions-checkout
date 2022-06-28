@@ -1,0 +1,32 @@
+name: test-output
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  modules-output:
+    name: Set output
+    runs-on: ubuntu-latest
+    outputs:
+      terraform_msg: '
+        A module: ${{ steps.a-module.outputs.terraform_msg }}
+        B module: ${{ steps.b-module.outputs.terraform_msg }}
+        '
+    steps:
+      - name: A
+        id: a-module
+        run: |
+          echo "::set-output name=terraform_msg::`echo 'Apply complete! Resources: 0 added, 0 changed, 0 destroyed'"
+      - name: B
+        id: b-module
+        run: |
+          echo "::set-output name=terraform_msg::`echo 'Apply complete! Resources: 5 added, 5 changed, 1 destroyed'"
+
+  show-output:
+    needs:  [modules-output]
+    name: Show output
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show output
+        run: echo '${{needs.modules-output.outputs.terraform_msg}}'
