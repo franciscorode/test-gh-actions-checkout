@@ -17,11 +17,11 @@ jobs:
       - name: A
         id: a-module
         run: |
-          echo "::set-output name=terraform_msg::`echo 'Apply complete! Resources: 0 added, 0 changed, 0 destroyed'"
+          echo "::set-output name=terraform_msg::`echo 'Apply complete! Resources: 0 added, 0 changed, 0 destroyed'`"
       - name: B
         id: b-module
         run: |
-          echo "::set-output name=terraform_msg::`echo 'Apply complete! Resources: 5 added, 5 changed, 1 destroyed'"
+          echo "::set-output name=terraform_msg::`echo 'Apply complete! Resources: 5 added, 5 changed, 1 destroyed'`"
 
   show-output:
     needs:  [modules-output]
