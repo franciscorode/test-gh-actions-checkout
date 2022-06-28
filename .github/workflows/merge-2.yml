@@ -12,7 +12,7 @@ jobs:
       terraform_msg: '
         A module: ${{ steps.a-module.outputs.terraform_msg }}\\n
         B module: ${{ steps.b-module.outputs.terraform_msg }}
-        '
+      '
     steps:
       - name: A
         id: a-module
@@ -29,4 +29,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Show output
-        run: echo '${{needs.modules-output.outputs.terraform_msg}}'
+        run: echo ${{needs.modules-output.outputs.terraform_msg}}
