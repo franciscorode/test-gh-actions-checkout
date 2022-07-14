@@ -12,7 +12,7 @@ jobs:
         id: setup-list-combinations
         run: |
           MATRIX_PARAMS_COMBINATIONS='one,two,three,four'
-          echo ::set-output name=matrix-combinations::[$MATRIX_PARAMS_COMBINATIONS]
+          echo ::set-output name=matrix-combinations::{\"include\":[$MATRIX_PARAMS_COMBINATIONS]}
     outputs:
       matrix-combinations: ${{ steps.setup-list-combinations.outputs.matrix-combinations }}
 
