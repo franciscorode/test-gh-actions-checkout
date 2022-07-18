@@ -8,8 +8,12 @@ jobs:
   set-envs:
     runs-on: ubuntu-latest
     steps:
-      - name: Set env and get it step
-        id: manage-env
+      - name: Set env
+        id: set-env
         run: |
           echo "AAA=AAAAAAA" >> $GITHUB_ENV
+
+      - name: get env
+        id: get-env
+        run: |
           echo ${{env.AAA}}
