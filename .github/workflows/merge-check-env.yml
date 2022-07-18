@@ -1,0 +1,15 @@
+name: check-env
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  set-outputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set env and get it step
+        id: manage-env
+        run: |
+          echo "AAA=AAAAAAA" >> $GITHUB_ENV
+          echo "${{env.AAA}}"
