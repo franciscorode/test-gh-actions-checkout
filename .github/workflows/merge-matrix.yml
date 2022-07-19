@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Output step ${{ matrix.module }}
         id: output-step
-        run: echo '::set-output name=${{ matrix.module }}::`echo I am the item of module '${{ matrix.module }}'`'
+        run: echo "::set-output name=${{ matrix.module }}::${{ matrix.module }}"
 #        run: |
 #          echo "::set-output name=${{ matrix.module }}::`echo I am the item '${{ matrix.module }}'`"
 #          echo "MATRIX_OUTPUTS=${{ env.MATRIX_OUTPUTS }}\n${{ matrix.module }} module: I am the item ${{ matrix.module }}" >> $GITHUB_ENV
