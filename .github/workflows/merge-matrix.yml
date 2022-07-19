@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-env:
-  MATRIX_OUTPUTS: Monday
 
 jobs:
   set-outputs:
@@ -33,5 +31,7 @@ jobs:
       - name: Print output step
         id: print-output-step
         run: |
-          echo outputs.ms: ${{needs.set-outputs.outputs.msg}}
+          echo outputs.msg: ${{needs.set-outputs.outputs.msg}}
+          echo needs.set-outputs: ${{needs.set-outputs}}
+          echo outputs: ${{needs.set-outputs.outputs}}
           echo MATRIX_OUTPUTS: ${{ env.MATRIX_OUTPUTS }}
