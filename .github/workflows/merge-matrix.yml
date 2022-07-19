@@ -29,6 +29,6 @@ jobs:
     steps:
       - env:
           NEEDS: ${{ toJSON(needs) }}
-          MESSAGE: `echo -e "- ${{ needs.run-modules.outputs.msg-gke }}\n${{ needs.run-modules.outputs.msg-iam }}\n${{ needs.run-modules.outputs.msg-bigquery }}"`
+          MESSAGE: "- ${{ needs.run-modules.outputs.msg-gke }}\n- ${{ needs.run-modules.outputs.msg-iam }}\n- ${{ needs.run-modules.outputs.msg-bigquery }}"
         run: |
           echo $MESSAGE
