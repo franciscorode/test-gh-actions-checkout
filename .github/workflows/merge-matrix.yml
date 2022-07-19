@@ -16,13 +16,17 @@ jobs:
           - three
           - four
     outputs:
-      msg: '${{ matrix.module }} module: ${{ steps.output-step.outputs.msg }}'
+      msg-one: 'One module: ${{ steps.output-step.outputs.one }}'
+      msg-two: 'Two module: ${{ steps.output-step.outputs.two }}'
+      msg-three: 'Three module: ${{ steps.output-step.outputs.three }}'
+      msg-four: 'Four module: ${{ steps.output-step.outputs.four }}'
     steps:
       - name: Output step ${{ matrix.module }}
         id: output-step
         run: |
-          echo "::set-output name=msg::`echo ${{ steps.output-step.outputs.msg }} I am the item ${{ matrix.module }}`"
-          echo "MATRIX_OUTPUTS=${{ env.MATRIX_OUTPUTS }}\n${{ matrix.module }} module: I am the item ${{ matrix.module }}" >> $GITHUB_ENV
+          echo "::set-output name=${{ matrix.module }}::`echo ${{ steps.output-step.outputs.msg }} I am the item ${{ matrix.module }}`"
+#          echo "MATRIX_OUTPUTS=${{ env.MATRIX_OUTPUTS }}\n${{ matrix.module }} module: I am the item ${{ matrix.module }}" >> $GITHUB_ENV
+#          echo "${{ matrix.module }} module: I am the item ${{ matrix.module }}"
 
   print-output:
     runs-on: ubuntu-latest
@@ -31,8 +35,11 @@ jobs:
       - name: Print output step
         id: print-output-step
         run: |
-          echo outputs.msg: ${{needs.set-outputs.outputs.msg}}
-          echo needs.set-outputs: ${{needs.set-outputs}}
-          echo outputs: ${{needs.set-outputs.outputs}}
-          echo outputs.one: ${{needs.set-outputs.outputs.one}}
-          echo MATRIX_OUTPUTS: ${{ env.MATRIX_OUTPUTS }}
+          echo outputs.msg-one: ${{needs.set-outputs.outputs.msg}}
+          echo outputs.msg-two: ${{needs.set-outputs.outputs.msg}}
+          echo outputs.msg-three: ${{needs.set-outputs.outputs.msg}}
+          echo outputs.msg-four: ${{needs.set-outputs.outputs.msg}}
+#          echo needs.set-outputs: ${{needs.set-outputs}}
+#          echo outputs: ${{needs.set-outputs.outputs}}
+#          echo outputs.one: ${{needs.set-outputs.outputs.one}}
+#          echo MATRIX_OUTPUTS: ${{ env.MATRIX_OUTPUTS }}
