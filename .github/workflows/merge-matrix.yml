@@ -12,13 +12,13 @@ jobs:
       matrix:
         module: [one, two, three, four]
     outputs:
-      msg-one: 'One module: ${{ steps.output-step.outputs.msg-one }}'
-      msg-two: 'Two module: ${{ steps.output-step.outputs.msg-two }}'
-      msg-three: 'Three module: ${{ steps.output-step.outputs.msg-three }}'
-      msg-four: 'Four module: ${{ steps.output-step.outputs.msg-four }}'
+      msg-one: 'One module: ${{ steps.output-step-one.outputs.msg-one }}'
+      msg-two: 'Two module: ${{ steps.output-step-two.outputs.msg-two }}'
+      msg-three: 'Three module: ${{ steps.output-step-three.outputs.msg-three }}'
+      msg-four: 'Four module: ${{ steps.output-step-four.outputs.msg-four }}'
     steps:
       - name: Output step ${{ matrix.module }}
-        id: output-step
+        id: output-step-${{ matrix.module }}
         run: echo "::set-output name=msg-${{ matrix.module }}::${{ matrix.module }}"
 #        run: |
 #          echo "::set-output name=${{ matrix.module }}::`echo I am the item '${{ matrix.module }}'`"
