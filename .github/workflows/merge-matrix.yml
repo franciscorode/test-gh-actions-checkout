@@ -34,4 +34,5 @@ jobs:
           echo outputs.msg: ${{needs.set-outputs.outputs.msg}}
           echo needs.set-outputs: ${{needs.set-outputs}}
           echo outputs: ${{needs.set-outputs.outputs}}
+          echo outputs.one: ${{needs.set-outputs.outputs.one}}
           echo MATRIX_OUTPUTS: ${{ env.MATRIX_OUTPUTS }}
