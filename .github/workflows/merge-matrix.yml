@@ -12,14 +12,14 @@ jobs:
       matrix:
         module: [one, two, three, four]
     outputs:
-      msg-one: 'One module: ${{ steps.output-step-one.outputs.msg-one }}'
-      msg-two: 'Two module: ${{ steps.output-step-two.outputs.msg-two }}'
-      msg-three: 'Three module: ${{ steps.output-step-three.outputs.msg-three }}'
-      msg-four: 'Four module: ${{ steps.output-step-four.outputs.msg-four }}'
+      msg-one: 'One module: ${{ steps.output-step.outputs.msg-one }}'
+      msg-two: 'Two module: ${{ steps.output-step.outputs.msg-two }}'
+      msg-three: 'Three module: ${{ steps.output-step.outputs.msg-three }}'
+      msg-four: 'Four module: ${{ steps.output-step.outputs.msg-four }}'
     steps:
       - name: Output step ${{ matrix.module }}
-        id: output-step-${{ matrix.module }}
-        run: echo "::set-output name=msg-${{ matrix.module }}::${{ matrix.module }}"
+        id: output-step
+        run: echo '::set-output name=msg-${{ matrix.module }}::dffsfsfsd'
 #        run: |
 #          echo "::set-output name=${{ matrix.module }}::`echo I am the item '${{ matrix.module }}'`"
 #          echo "MATRIX_OUTPUTS=${{ env.MATRIX_OUTPUTS }}\n${{ matrix.module }} module: I am the item ${{ matrix.module }}" >> $GITHUB_ENV
