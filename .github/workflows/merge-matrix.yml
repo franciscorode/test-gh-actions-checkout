@@ -20,7 +20,7 @@ jobs:
       - name: Output step ${{ matrix.module }}
         id: output-step
         run: |
-          echo "::set-output name=msg::`echo {{ steps.output-step.outputs.msg }} I am the item ${{ matrix.module }}`"
+          echo "::set-output name=msg::`echo ${{ steps.output-step.outputs.msg }} I am the item ${{ matrix.module }}`"
 
   print-output:
     runs-on: ubuntu-latest
