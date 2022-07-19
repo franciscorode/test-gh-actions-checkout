@@ -29,8 +29,7 @@ jobs:
       - env:
           NEEDS: ${{ toJSON(needs) }}
         run: |
-          echo outputs.msg-one: ${{needs.set-outputs.outputs.msg-one}}
-          echo outputs.msg-two: ${{needs.set-outputs.outputs.msg-two}}
-          echo outputs.msg-three: ${{needs.set-outputs.outputs.msg-three}}
-          echo outputs.msg-four: ${{needs.set-outputs.outputs.msg-four}}
+          echo msg-gke: ${{needs.run-modules.outputs.msg-gke}}
+          echo msg-iam: ${{needs.run-modules.outputs.msg-iam}}
+          echo msg-bigquery: ${{needs.run-modules.outputs.msg-bigquery}}
           echo "needs: $NEEDS"
