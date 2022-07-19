@@ -12,9 +12,9 @@ jobs:
         module: [gke, iam, bigquery]
 
     outputs:
-      msg-gke: "Module GKE: ${{ steps.run-tf-module.outputs.gke }}"
-      msg-iam: "Module IAM: ${{ steps.run-tf-module.outputs.iam }}"
-      msg-bigquery: "Module BIGQUERY: ${{ steps.run-tf-module.outputs.bigquery }}"
+      msg-gke: ${{ steps.run-tf-module.outputs.gke }}
+      msg-iam: ${{ steps.run-tf-module.outputs.iam }}
+      msg-bigquery: ${{ steps.run-tf-module.outputs.bigquery }}
 
     steps:
       - id: run-tf-module
@@ -29,7 +29,6 @@ jobs:
     steps:
       - env:
           NEEDS: ${{ toJSON(needs) }}
+          MESSAGE: `echo -e "- ${{ needs.run-modules.outputs.msg-gke }}\n${{ needs.run-modules.outputs.msg-iam }}\n${{ needs.run-modules.outputs.msg-bigquery }}"`
         run: |
-          echo "- ${{ needs.run-modules.outputs.msg-gke }}
-          - ${{ needs.run-modules.outputs.msg-iam }}
-          - ${{ needs.run-modules.outputs.msg-bigquery }}"
+          echo $MESSAGE
