@@ -28,41 +28,9 @@ jobs:
     steps:
       - env:
           NEEDS: ${{ toJSON(needs) }}
-        run: echo "$NEEDS"
-
-#jobs:
-#  set-outputs:
-#    runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        module: [two, three, four]
-#    outputs:
-##      msg-one: 'One module: ${{ steps.output-step.outputs.msg-one }}'
-#      msg-two: 'Two module: ${{ steps.output-step.outputs.msg-two }}'
-#      msg-three: 'Three module: ${{ steps.output-step.outputs.msg-three }}'
-#      msg-four: 'Four module: ${{ steps.output-step.outputs.msg-four }}'
-#    steps:
-#      - name: Output step
-#        id: output-step
-#        shell: bash
-#        run: echo '::set-output name=msg-${{ matrix.module }}::dffsfsfsd'
-##        run: |
-##          echo "::set-output name=${{ matrix.module }}::`echo I am the item '${{ matrix.module }}'`"
-##          echo "MATRIX_OUTPUTS=${{ env.MATRIX_OUTPUTS }}\n${{ matrix.module }} module: I am the item ${{ matrix.module }}" >> $GITHUB_ENV
-##          echo "${{ matrix.module }} module: I am the item ${{ matrix.module }}"
-#
-#  print-output:
-#    runs-on: ubuntu-latest
-#    needs: set-outputs
-#    steps:
-#      - name: Print output step
-#        id: print-output-step
-#        env:
-#          NEEDS: ${{ toJSON(needs) }}
-#        run: |
-#          echo outputs.msg-one: ${{needs.set-outputs.outputs.msg-one}}
-#          echo outputs.msg-two: ${{needs.set-outputs.outputs.msg-two}}
-#          echo outputs.msg-three: ${{needs.set-outputs.outputs.msg-three}}
-#          echo outputs.msg-four: ${{needs.set-outputs.outputs.msg-four}}
-#          echo "needs: $NEEDS"
-
+        run: |
+          echo outputs.msg-one: ${{needs.set-outputs.outputs.msg-one}}
+          echo outputs.msg-two: ${{needs.set-outputs.outputs.msg-two}}
+          echo outputs.msg-three: ${{needs.set-outputs.outputs.msg-three}}
+          echo outputs.msg-four: ${{needs.set-outputs.outputs.msg-four}}
+          echo "needs: $NEEDS"
