@@ -5,25 +5,25 @@ on:
     branches:
       - main
 jobs:
-  build:
+  run-modules:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        module: [a, b, c]
+        module: [gke, iam, bigquery]
 
     outputs:
-      deploy-url-a: ${{ steps.deploy-url.outputs.a }}
-      deploy-url-b: ${{ steps.deploy-url.outputs.b }}
-      deploy-url-c: ${{ steps.deploy-url.outputs.c }}
+      msg-gke: ${{ steps.run-tf-module.outputs.gke }}
+      msg-iam: ${{ steps.run-tf-module.outputs.iam }}
+      msg-bigquery: ${{ steps.run-tf-module.outputs.bigquery }}
 
     steps:
-      - id: deploy-url
+      - id: run-tf-module
         run: echo '::set-output name=${{ matrix.module }}::${{ matrix.module }}'
 
-  e2e:
+  notify:
     runs-on: ubuntu-latest
     needs:
-      - build
+      - run-modules
 
     steps:
       - env:
