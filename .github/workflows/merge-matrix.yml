@@ -19,7 +19,6 @@ jobs:
     steps:
       - id: run-tf-module
         run: |
-        # echo '::set-output name=${{ matrix.module }}::${{ matrix.module }}'
         echo "::set-output name=${{ matrix.module }}::`echo I am the item '${{ matrix.module }}'`"
 
   notify:
@@ -35,3 +34,4 @@ jobs:
           echo msg-iam: ${{needs.run-modules.outputs.msg-iam}}
           echo msg-bigquery: ${{needs.run-modules.outputs.msg-bigquery}}
           echo "needs: $NEEDS"
+          echo -e "Final message: ${{needs.run-modules.outputs.msg-gke}}\n${{needs.run-modules.outputs.msg-iam}}\n${{needs.run-modules.outputs.msg-bigquery}}"
