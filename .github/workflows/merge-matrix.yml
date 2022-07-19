@@ -17,7 +17,7 @@ jobs:
       msg-three: 'Three module: ${{ steps.output-step.outputs.msg-three }}'
       msg-four: 'Four module: ${{ steps.output-step.outputs.msg-four }}'
     steps:
-      - name: Output step ${{ matrix.module }}
+      - name: Output step
         id: output-step
         run: echo '::set-output name=msg-${{ matrix.module }}::dffsfsfsd'
 #        run: |
