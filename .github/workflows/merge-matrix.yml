@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        module: [one, two, three, four]
+        module: [two, three, four]
     outputs:
-      msg-one: 'One module: ${{ steps.output-step.outputs.msg-one }}'
+#      msg-one: 'One module: ${{ steps.output-step.outputs.msg-one }}'
       msg-two: 'Two module: ${{ steps.output-step.outputs.msg-two }}'
       msg-three: 'Three module: ${{ steps.output-step.outputs.msg-three }}'
       msg-four: 'Four module: ${{ steps.output-step.outputs.msg-four }}'
