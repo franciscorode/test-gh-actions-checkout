@@ -13,8 +13,8 @@ jobs:
 
     outputs:
       msg-gke: "Module GKE: ${{ steps.run-tf-module.outputs.gke }}"
-      msg-iam: "Module GKE: ${{ steps.run-tf-module.outputs.iam }}"
-      msg-bigquery: "Module GKE: ${{ steps.run-tf-module.outputs.bigquery }}"
+      msg-iam: "Module IAM: ${{ steps.run-tf-module.outputs.iam }}"
+      msg-bigquery: "Module BIGQUERY: ${{ steps.run-tf-module.outputs.bigquery }}"
 
     steps:
       - id: run-tf-module
