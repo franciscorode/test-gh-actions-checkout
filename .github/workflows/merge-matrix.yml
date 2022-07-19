@@ -18,7 +18,9 @@ jobs:
 
     steps:
       - id: run-tf-module
-        run: echo '::set-output name=${{ matrix.module }}::${{ matrix.module }}'
+        run: |
+        # echo '::set-output name=${{ matrix.module }}::${{ matrix.module }}'
+        echo "::set-output name=${{ matrix.module }}::`echo I am the item '${{ matrix.module }}'`"
 
   notify:
     runs-on: ubuntu-latest
