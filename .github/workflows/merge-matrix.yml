@@ -19,6 +19,7 @@ jobs:
     steps:
       - name: Output step
         id: output-step
+        shell: bash
         run: echo '::set-output name=msg-${{ matrix.module }}::dffsfsfsd'
 #        run: |
 #          echo "::set-output name=${{ matrix.module }}::`echo I am the item '${{ matrix.module }}'`"
