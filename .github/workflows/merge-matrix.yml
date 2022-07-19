@@ -35,10 +35,10 @@ jobs:
       - name: Print output step
         id: print-output-step
         run: |
-          echo outputs.msg-one: ${{needs.set-outputs.outputs.msg}}
-          echo outputs.msg-two: ${{needs.set-outputs.outputs.msg}}
-          echo outputs.msg-three: ${{needs.set-outputs.outputs.msg}}
-          echo outputs.msg-four: ${{needs.set-outputs.outputs.msg}}
+          echo outputs.msg-one: ${{needs.set-outputs.outputs.msg-one}}
+          echo outputs.msg-two: ${{needs.set-outputs.outputs.msg-two}}
+          echo outputs.msg-three: ${{needs.set-outputs.outputs.msg-three}}
+          echo outputs.msg-four: ${{needs.set-outputs.outputs.msg-four}}
 #          echo needs.set-outputs: ${{needs.set-outputs}}
 #          echo outputs: ${{needs.set-outputs.outputs}}
 #          echo outputs.one: ${{needs.set-outputs.outputs.one}}
