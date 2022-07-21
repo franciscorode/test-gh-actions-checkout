@@ -21,19 +21,24 @@ jobs:
         run: |
           echo "::set-output name=${{ matrix.module }}::`echo I am the item '${{ matrix.module }}'`"
 
-  notify:
+  format-output:
+    needs: [ run-modules ]
     runs-on: ubuntu-latest
-    needs:
-      - run-modules
+    outputs:
+      msg: ${{ steps.format-output-step.outputs.msg }}
     steps:
     - id: format-output-step
       run: |
-        TERRAFORM_OUTPUT="- ${{ needs.run-modules.outputs.msg-gke }}
+        TERRAFORM_OUTPUT="${{ needs.run-modules.outputs.msg-gke }}
         - ${{ needs.run-modules.outputs.msg-iam }}
         - ${{ needs.run-modules.outputs.msg-bigquery }}"
-        echo "TERRAFORM_OUTPUT<<EOF" >> $GITHUB_ENV
-        echo "$TERRAFORM_OUTPUT" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
-    - id: print-output
+        echo "::set-output name=msg::$TERRAFORM_OUTPUT"
+
+  notify:
+    runs-on: ubuntu-latest
+    needs:
+      - format-output
+    steps:
+    - name: print-output
       run: |
-        echo "${{ env.TERRAFORM_OUTPUT }}"
+        echo ${{ needs.format-output.outputs.msg }}
