@@ -44,4 +44,4 @@ jobs:
     steps:
     - name: print-output
       run: |
-        echo ${{ needs.format-output.outputs.msg }}
+        echo "${{ needs.format-output.outputs.msg }}"
