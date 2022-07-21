@@ -28,7 +28,7 @@ jobs:
     steps:
     - id: format-output-step
       run: |
-        TERRAFORM_OUTPUT="${{ needs.run-modules.outputs.msg-gke }}
+        TERRAFORM_OUTPUT="- ${{ needs.run-modules.outputs.msg-gke }}
         - ${{ needs.run-modules.outputs.msg-iam }}
         - ${{ needs.run-modules.outputs.msg-bigquery }}"
         echo "TERRAFORM_OUTPUT<<EOF" >> $GITHUB_ENV
