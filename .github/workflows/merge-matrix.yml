@@ -40,7 +40,6 @@ jobs:
     needs:
       - format-output
     steps:
-      - env:
-          NEEDS: ${{ toJSON(needs) }}
+      - name: print-output
         run: |
           echo ${{ env.TERRAFORM_OUTPUT }}
