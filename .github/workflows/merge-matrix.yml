@@ -36,4 +36,4 @@ jobs:
         echo "EOF" >> $GITHUB_ENV
     - id: print-output
       run: |
-        echo ${{ env.TERRAFORM_OUTPUT }}
+        echo "${{ env.TERRAFORM_OUTPUT }}"
