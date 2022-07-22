@@ -29,4 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Show output
-        run: echo ${{needs.modules-output.outputs.terraform_msg}}
+        run: |
+          ls > aaa.txt
+          echo "$(cat aaa.txt)"
